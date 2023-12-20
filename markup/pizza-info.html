@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="wrapper">
+        <header class="header">
+          <a class="header__logo" href="/">
+            <img src="/img/Logo.svg" width="273" height="43" alt="Logo" />
+          </a>
+          <nav class="header__nav">
+            <!-- a.active -->
+            <a href="/new">Новинки</a>
+            <a href="/hit">Хиты</a><a href="/vegan">Без мяса</a>
+            <a href="/hot">Острые</a>
+            <a class="button --filled" href="/cart">
+              Корзина
+              <span>1</span>
+            </a>
+          </nav>
+        </header>
+
+        <main class="page-main">
+          <div class="pizza-info">
+            <img
+              src="https://dodopizza-a.akamaihd.net/static/Img/Products/4c7d597ec2074b1589e795d95db75f57_584x584.jpeg"
+              width="430"
+            />
+            <div class="pizza-info__left-column">
+              <div>
+                <h1 class="pizza-info__title">Додо Микс</h1>
+                <p class="pizza-info__params">
+                  30 см, традиционное тесто, 650 г
+                </p>
+                <p class="pizza-info__composition">
+                  Бекон, цыпленок, ветчина, сыр блю чиз, сыры чеддер и пармезан,
+                  соус песто, кубики брынзы, томаты, красный лук, моцарелла,
+                  соус альфредо, чеснок, итальянские травы
+                </p>
+              </div>
+              <div class="pizza-info__settings">
+                <div class="pizza-info__row">
+                  <button class="button --outline">Маленькая</button>
+                  <button class="button --outline --active" disabled>
+                    Cредняя
+                  </button>
+                  <button class="button --outline">Большая</button>
+                </div>
+                <div class="pizza-info__row">
+                  <button class="button --outline --active" disabled>
+                    Традиционное
+                  </button>
+                  <button class="button --outline">Тонкое</button>
+                </div>
+              </div>
+              <button class="button --big --filled">
+                Добавить в корзину за 843 ₽
+              </button>
+              <!-- <button class="button --big --filled --success" disabled>Добавлено в корзину</button> -->
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

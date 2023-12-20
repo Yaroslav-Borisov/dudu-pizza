@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="wrapper">
+        <header class="header">
+          <a class="header__logo" href="/">
+            <img src="/img/Logo.svg" width="273" height="43" alt="Logo" />
+          </a>
+          <nav class="header__nav">
+            <!-- a.active -->
+            <a href="/new">Новинки</a>
+            <a href="/hit">Хиты</a><a href="/vegan">Без мяса</a>
+            <a href="/hot">Острые</a>
+            <a class="button --filled active" href="/cart">
+              Корзина
+              <span>3</span>
+            </a>
+          </nav>
+        </header>
+
+        <main class="page-main">
+          <section class="section">
+            <div class="section__header">
+              <div class="section__left-column">
+                <h2 class="section__title">Корзина</h2>
+              </div>
+              <button class="button --outline --active">Очистить</button>
+            </div>
+            <div class="cart-list">
+              <div class="cart-item">
+                <img
+                  class="cart-item__image"
+                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/103d94956de3424586764b1adeca5e68_584x584.jpeg"
+                  width="255"
+                  height="255"
+                  alt="Пицца"
+                />
+                <div>
+                  <h3 class="cart-item__title">Песто</h3>
+                  <p class="cart-item__desc">
+                    Cредняя 30 см, традиционное тесто
+                  </p>
+                </div>
+                <div class="cart-item__count">
+                  <button class="cart-item__count-btn">
+                    <img src="/img/Minus.svg" width="36" height="36" />
+                  </button>
+                  2
+                  <button class="cart-item__count-btn">
+                    <img src="/img/Plus.svg" width="36" height="36" />
+                  </button>
+                </div>
+                <span>1524 ₽</span>
+                <button class="cart-item__remove-btn">
+                  <img src="/img/Remove.svg" width="36" height="36" />
+                </button>
+              </div>
+              <div class="cart-item">
+                <img
+                  class="cart-item__image"
+                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/4c7d597ec2074b1589e795d95db75f57_584x584.jpeg"
+                  width="255"
+                  height="255"
+                  alt="Пицца"
+                />
+                <div>
+                  <h3 class="cart-item__title">Додо Микс</h3>
+                  <p class="cart-item__desc">
+                    Cредняя 30 см, традиционное тесто
+                  </p>
+                </div>
+                <div class="cart-item__count">
+                  <button class="cart-item__count-btn" disabled="">
+                    <img src="/img/Minus.svg" width="36" height="36" />
+                  </button>
+                  1
+                  <button class="cart-item__count-btn">
+                    <img src="/img/Plus.svg" width="36" height="36" />
+                  </button>
+                </div>
+                <span>843 ₽</span>
+                <button class="cart-item__remove-btn">
+                  <img src="/img/Remove.svg" width="36" height="36" />
+                </button>
+              </div>
+            </div>
+            <div class="section__footer">
+              <button class="button --big --filled">
+                Оформить заказ за&nbsp;<b>2367 ₽</b>
+              </button>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

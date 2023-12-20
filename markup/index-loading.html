@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="wrapper">
+        <header class="header">
+          <a class="header__logo" href="/">
+            <img src="/img/Logo.svg" width="273" height="43" alt="Logo" />
+          </a>
+          <nav class="header__nav">
+            <a class="active" href="/new">Новинки</a>
+            <a href="/hit">Хиты</a><a href="/vegan">Без мяса</a>
+            <a href="/hot">Острые</a>
+            <a class="button --filled" href="/cart">
+              Корзина
+              <span>1</span>
+            </a>
+          </nav>
+        </header>
+
+        <main class="page-main">
+          <section class="section">
+            <div class="section__header">
+              <div class="section__left-column">
+                <h2 class="section__title">Все пиццы</h2>
+                <div class="sort">
+                  <button class="sort__toggle">
+                    <span>Сначала дорогие</span>
+                    <img src="img/Arrow.svg" />
+                  </button>
+                  <ul class="sort__list">
+                    <li class="active">Сначала дорогие</li>
+                    <li>Сначала дешевые</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="search">
+                <input type="text" placeholder="Название блюда" />
+                <img src="img/Search.svg" alt="Search" width="20" height="20" />
+              </div>
+            </div>
+            <div class="card-list">
+              <div class="card-item-skeleton">
+                <div class="card-item-skeleton__image"></div>
+                <div class="card-item-skeleton__title"></div>
+                <div class="card-item-skeleton__desc">
+                  <div class="card-item-skeleton__text-row"></div>
+                  <div class="card-item-skeleton__text-row"></div>
+                  <div class="card-item-skeleton__text-row"></div>
+                </div>
+                <div class="card-item-skeleton__footer">
+                  <div class="card-item-skeleton__price"></div>
+                  <div class="card-item-skeleton__button"></div>
+                </div>
+              </div>
+              <div class="card-item-skeleton">
+                <div class="card-item-skeleton__image"></div>
+                <div class="card-item-skeleton__title"></div>
+                <div class="card-item-skeleton__desc">
+                  <div class="card-item-skeleton__text-row"></div>
+                  <div class="card-item-skeleton__text-row"></div>
+                  <div class="card-item-skeleton__text-row"></div>
+                </div>
+                <div class="card-item-skeleton__footer">
+                  <div class="card-item-skeleton__price"></div>
+                  <div class="card-item-skeleton__button"></div>
+                </div>
+              </div>
+              <div class="card-item-skeleton">
+                <div class="card-item-skeleton__image"></div>
+                <div class="card-item-skeleton__title"></div>
+                <div class="card-item-skeleton__desc">
+                  <div class="card-item-skeleton__text-row"></div>
+                  <div class="card-item-skeleton__text-row"></div>
+                  <div class="card-item-skeleton__text-row"></div>
+                </div>
+                <div class="card-item-skeleton__footer">
+                  <div class="card-item-skeleton__price"></div>
+                  <div class="card-item-skeleton__button"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
