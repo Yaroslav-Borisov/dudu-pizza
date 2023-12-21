@@ -9,11 +9,12 @@ export class CardListService {
 		this.cards = cards;
 	}
 
-	public getTargetCards(category: string, sortType: string) {
+	public getTargetCards(category: string, sortType: string, searchText: string) {
 		const sortedCards = this.sortCards(this.cards, sortType) as CardItem[];
 		const categoryCards = this.getCategoryCards(sortedCards, category);
+		const targetCards = this.searchCards(categoryCards, searchText);
 
-		return categoryCards;
+		return targetCards;
 	}
 
 	public sortCards(cards: CardItem[], sortType: string) {
@@ -29,6 +30,14 @@ export class CardListService {
 			return cards;
 		} else {
 			return cards.filter(card => card.category.includes(category));
+		}
+	}
+
+	public searchCards(cards: CardItem[], searchText: string) {
+		if (searchText === '') {
+			return cards;
+		} else {
+			return cards.filter(card => (card.title + ' ' + card.desc).toLowerCase().includes(searchText));
 		}
 	}
 }
