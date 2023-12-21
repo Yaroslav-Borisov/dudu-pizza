@@ -1,11 +1,39 @@
-import { CardItem } from '../../types';
+import { useState } from 'react';
+import { CardItem, PizzaDoughOption, PizzaSizeOption } from '../../types';
+import { DoughMap, SizesMap } from '../../const';
+import Options from '../Options/Options';
+import { PizzaInfoService } from '../../services/pizzaInfoService';
 
 type PizzaInfoParams = {
 	card: CardItem
 }
 
 export const PizzaInfo = ({card}: PizzaInfoParams) => {
-    
+	const [size, setSize] = useState(SizesMap.MIDDLE);
+	const [dough, setDough] = useState(DoughMap.TRADITIONAL);
+	const [isAddedToCart, setIsAddedToCart] = useState(false);
+
+	const service = new PizzaInfoService(card);
+
+	const onOptionChange = (setState: any) => {
+		return (state: PizzaDoughOption | PizzaSizeOption) => {
+			setState(state);
+			setIsAddedToCart(false);
+		};
+	};
+
+	const addToCart = () => {
+		const fullPizzaCard = {
+			...card,
+			price: service.getTotalPrice(size, dough),
+			size: size.diameter,
+			dough: dough.name
+		};
+
+		setIsAddedToCart(true);
+		console.log(fullPizzaCard);
+	};
+
 	return (
 		<main className="page-main">
 			<div className="pizza-info">
@@ -16,32 +44,24 @@ export const PizzaInfo = ({card}: PizzaInfoParams) => {
 				<div className="pizza-info__left-column">
 					<div>
 						<h1 className="pizza-info__title">{card.title}</h1>
-						<p className="pizza-info__params">
-                  30 см, традиционное тесто, 650 г
-						</p>
+						<p className="pizza-info__params">{service.getParamsText(size, dough)}</p>
 						<p className="pizza-info__composition">
 							{card.desc}
 						</p>
 					</div>
 					<div className="pizza-info__settings">
 						<div className="pizza-info__row">
-							<button className="button --outline">Маленькая</button>
-							<button className="button --outline --active" disabled>
-                    Cредняя
-							</button>
-							<button className="button --outline">Большая</button>
+							<Options map={SizesMap} state={size} onClick={onOptionChange(setSize)} />
 						</div>
 						<div className="pizza-info__row">
-							<button className="button --outline --active" disabled>
-                    Традиционное
-							</button>
-							<button className="button --outline">Тонкое</button>
+							<Options map={DoughMap} state={dough} onClick={onOptionChange(setDough)} />
 						</div>
 					</div>
-					<button className="button --big --filled">
-                Добавить в корзину за 843 ₽
-					</button>
-					{/* <!-- <button className="button --big --filled --success" disabled>Добавлено в корзину</button> --> */}
+					{isAddedToCart ?
+						<button className="button --big --filled --success" disabled>Добавлено в корзину</button>
+						:
+						<button className="button --big --filled" onClick={addToCart}>Добавить в корзину за {service.getTotalPrice(size, dough)} ₽</button>
+					}
 				</div>
 			</div>
 		</main>

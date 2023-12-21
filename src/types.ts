@@ -6,3 +6,14 @@ export type CardItem = {
 	price: number;
 	category: string[];
 }
+
+export type PizzaSizeOption = {
+	name: string;
+	diameter: number;
+	ratio: number;
+}
+
+export type PizzaDoughOption = {
+	name: string;
+	ratio: number;
+}
