@@ -24,7 +24,7 @@ export const Layout = ({title, hasSearch, cards}: layoutProps) => {
 						</div>
 						{hasSearch ? <Search/> : <></>}
 					</div>
-					<CardList cards={cards} />
+					{cards.length === 0 ? <p className="placeholder">Ничего не найдено</p> : <CardList cards={cards} />}
 				</section>
 			</main>
 		</>
