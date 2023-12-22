@@ -3,16 +3,21 @@ import { CardItem, PizzaDoughOption, PizzaSizeOption } from '../../types';
 import { DoughMap, SizesMap } from '../../const';
 import Options from '../Options/Options';
 import { PizzaInfoService } from '../../services/pizzaInfoService';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store/store';
+import { cartActions } from '../../store/cart.slice';
+import { nanoid } from 'nanoid';
 
 type PizzaInfoParams = {
 	card: CardItem
 }
 
 export const PizzaInfo = ({card}: PizzaInfoParams) => {
+	const dispatch = useDispatch<AppDispatch>();
 	const [size, setSize] = useState(SizesMap.MIDDLE);
 	const [dough, setDough] = useState(DoughMap.TRADITIONAL);
 	const [isAddedToCart, setIsAddedToCart] = useState(false);
-
+	
 	const service = new PizzaInfoService(card);
 
 	const onOptionChange = (setState: any) => {
@@ -21,17 +26,20 @@ export const PizzaInfo = ({card}: PizzaInfoParams) => {
 			setIsAddedToCart(false);
 		};
 	};
-
+	
 	const addToCart = () => {
 		const fullPizzaCard = {
 			...card,
+			id: nanoid(),
 			price: service.getTotalPrice(size, dough),
-			size: size.diameter,
-			dough: dough.name
+			diameter: size.diameter,
+			size: service.getSizeName(size.diameter) as string,
+			dough: dough.name,
+			amount: 1
 		};
 
+		dispatch(cartActions.addToCart(fullPizzaCard));
 		setIsAddedToCart(true);
-		console.log(fullPizzaCard);
 	};
 
 	return (

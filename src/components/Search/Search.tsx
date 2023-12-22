@@ -12,9 +12,8 @@ export const Search = () => {
 		(e: React.ChangeEvent<HTMLInputElement>) => {
 			dispatch(cardsActions.changeSearchText(e.target.value.trim().toLowerCase()));
 		}
-		, 800);
+		, 1000);
 	
-
 	return (
 		<div className={focus ? 'search active' : 'search'}>
 			<input type="text" onChange={onInputChange} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} placeholder="Название блюда" />

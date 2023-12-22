@@ -1,7 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { Category } from '../../const';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 export const Header = () => {
+	const cartCards = useSelector((state: RootState) => state.cartCards.cartCards);
+
 
 	return (
 		<header className="header">
@@ -19,7 +23,7 @@ export const Header = () => {
 				}
 				<NavLink className="button --filled" to="/cart">
                     Корзина
-					{/* <span>1</span> */}
+					{cartCards.length !== 0 ? <span>{cartCards.map(card => card.amount).reduce((sum, current) => sum + current)}</span> : ''}
 				</NavLink>
 			</nav>
 		</header>

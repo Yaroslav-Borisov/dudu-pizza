@@ -1,3 +1,4 @@
+import { SizesMap } from '../const';
 import { CardItem, PizzaDoughOption, PizzaSizeOption } from '../types';
 
 export class PizzaInfoService {
@@ -18,5 +19,13 @@ export class PizzaInfoService {
 
 	public getParamsText(size: PizzaSizeOption, dough: PizzaDoughOption) {
 		return `${size.diameter} см, ${dough.name.toLowerCase()} тесто, ${this.getTotalWeight(size, dough)} г`;
+	}
+
+	public getSizeName(size: number) {
+		for (const value of Object.values(SizesMap)) {
+			if (value.diameter === size) {
+				return value.name;
+			}
+		}
 	}
 }
