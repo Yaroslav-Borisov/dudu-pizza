@@ -1,6 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CardItem } from '../types';
-import mockCards from '/Users/Ярослав/Desktop/Нужности/react/dudu-pizza/mock/mockCards';
 import { SortType } from '../const';
 
 interface CardState {
@@ -10,7 +9,7 @@ interface CardState {
 }
 
 const initialState: CardState = {
-	cards: mockCards,
+	cards: [],
 	sortType: SortType.Expensive,
 	search: ''
 };
@@ -19,6 +18,9 @@ export const cardsSlice = createSlice({
 	name: 'cards',
 	initialState: initialState,
 	reducers: {
+		setItems: (state, action: PayloadAction<CardItem[]>) => {
+			state.cards = action.payload;
+		},
 		changeSortType: (state, action: PayloadAction<string>) => {
 			state.sortType = action.payload;
 		},

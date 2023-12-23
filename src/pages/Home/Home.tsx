@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { Category } from '../../const';
 import { CardListService } from '../../services/cardListService';
+import { useFetchPizzaCards } from '../../hooks/useFetchPizzaCards';
+
 
 export const Home = () => {
 	const {category = ''} = useParams();
@@ -11,6 +13,7 @@ export const Home = () => {
 	const sortType = useSelector((state: RootState) => state.cards.sortType);
 	const searchText = useSelector((state: RootState) => state.cards.search);
 
+	useFetchPizzaCards();
 
 	const service = new CardListService(cards);
 
