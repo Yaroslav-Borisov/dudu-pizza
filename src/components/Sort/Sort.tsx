@@ -14,7 +14,6 @@ export const Sort = () => {
 		setVisible(false);
 	};
 
-
 	return (
 		<div className="sort">
 			<button className="sort__toggle" onClick={() => setVisible(prev => !prev)}>

@@ -1,18 +1,30 @@
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
 import { Header } from '../../components/Header/Header';
 import { PizzaInfo } from '../../components/PizzaInfo/PizzaInfo';
+import { useEffect, useState } from 'react';
+import { CardItem } from '../../types';
+import axios from 'axios';
 
 export const Pizza = () => {
 	const {id} = useParams();
-	const cards = useSelector((state: RootState) => state.cards.cards);
-	const card = cards.find(card => card.id === id);
+	const [isLoading, setIsLoading] = useState(false);
+	const [card, setCard] = useState<CardItem>();
+
+	useEffect(() => {
+		const fetchPizza = async () => {
+			setIsLoading(true);
+			const { data } = await axios.get(`https://62d86a78908831393590aa97.mockapi.io/items/${id}`);
+			setCard(data);
+			setIsLoading(false);
+		};
+	
+		fetchPizza();
+	}, []);
 
 	return (
 		<>
 			<Header/>
-			{card && <PizzaInfo card={card}/>}
+			{isLoading ? <>Загружаю карточку...</> : card && <PizzaInfo card={card}/>}
 		</>
 	);
 };

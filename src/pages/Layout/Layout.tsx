@@ -6,12 +6,13 @@ import { CardItem } from '../../types';
 
 
 type layoutProps = {
-    title: string;
+	title: string;
     hasSearch: boolean;
-    cards: CardItem[]
+    cards: CardItem[];
+	isLoading: boolean
 }
 
-export const Layout = ({title, hasSearch, cards}: layoutProps) => {
+export const Layout = ({title, hasSearch, cards, isLoading}: layoutProps) => {
 	return (
 		<>
 			<Header/>
@@ -24,7 +25,11 @@ export const Layout = ({title, hasSearch, cards}: layoutProps) => {
 						</div>
 						{hasSearch ? <Search/> : <></>}
 					</div>
-					{cards.length === 0 ? <p className="placeholder">Ничего не найдено</p> : <CardList cards={cards} />}
+					{isLoading ? 
+						<>Загружаю карточки...</>
+						:
+						cards.length === 0 ? <p className="placeholder">Ничего не найдено</p> : <CardList cards={cards} />
+					}
 				</section>
 			</main>
 		</>

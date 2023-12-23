@@ -6,7 +6,6 @@ import { RootState } from '../../store/store';
 export const Header = () => {
 	const cartCards = useSelector((state: RootState) => state.cartCards.cartCards);
 
-
 	return (
 		<header className="header">
 			<NavLink className="header__logo" to='/'>
