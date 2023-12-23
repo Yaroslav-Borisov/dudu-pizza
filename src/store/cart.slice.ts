@@ -1,11 +1,14 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { FullPizzaCard } from '../types';
+import { loadCartState } from './methods';
+
+export const CART_PERSISTENT_STATE = 'cartData';
 
 interface CartState {
     cartCards: FullPizzaCard[]
 }
 
-const initialState: CartState = {
+const initialState: CartState = loadCartState<CartState>() ?? {
 	cartCards: []
 };
 
