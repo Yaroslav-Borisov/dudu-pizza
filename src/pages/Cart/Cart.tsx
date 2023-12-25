@@ -7,7 +7,7 @@ import { cartActions } from '../../store/cart.slice';
 export const Cart = () => {
 	const dispatch = useDispatch<AppDispatch>();
 	const cartCards = useSelector((state: RootState) => state.cartCards.cartCards);
-	const totalOrderPrice = cartCards.map(card => card.price).reduce((sum, current) => sum + current, 0);
+	const totalOrderPrice = cartCards.map(card => card.price * card.amount).reduce((sum, current) => sum + current, 0);
 
 	return (
 		<>
