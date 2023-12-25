@@ -36,6 +36,13 @@ export const DoughMap = {
 };
 
 export const SortType = {
-	Expensive: 'Сначала дорогие',
-	Cheap: 'Сначала дешёвые'
+	Expensive: 'expensive',
+	Cheap: 'cheap'
 } as const;
+
+export const BASE_URL = 'https://62d86a78908831393590aa97.mockapi.io'
+
+export const SortText = {
+  [SortType.Expensive]: 'Сначала дорогие',
+  [SortType.Cheap]: 'Сначала дешевые',
+}

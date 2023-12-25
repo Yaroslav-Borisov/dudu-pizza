@@ -1,17 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { cardsActions } from '../store/cards.slice';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../store/store';
+import PizzaApi from '../api';
 
-export const useFetchPizzaCards = (setIsLoading: (state: boolean) => void) => {
+export const useFetchPizzaCards = () => {
+  const [isLoading, setIsLoading] = useState(false);
 	const dispatch = useDispatch<AppDispatch>();
 
 	const fetchPizzaCards = async () => {
 		setIsLoading(true);
-		const { data } = await axios.get(
-			'https://62d86a78908831393590aa97.mockapi.io/items?'
-		);
+		const data = await PizzaApi.getAll()
       
 		dispatch(cardsActions.setItems(data));
 		setIsLoading(false);
@@ -20,4 +19,8 @@ export const useFetchPizzaCards = (setIsLoading: (state: boolean) => void) => {
 	useEffect(() => {
 		fetchPizzaCards();
 	}, []);
+
+  return {
+    isLoading
+  }
 };
