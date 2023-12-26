@@ -3,7 +3,7 @@ import { Header } from '../../components/Header/Header';
 import { PizzaInfo } from '../../components/PizzaInfo/PizzaInfo';
 import { useEffect, useState } from 'react';
 import { CardItem } from '../../types';
-import axios from 'axios';
+import PizzaApi from '../../api';
 
 export const Pizza = () => {
 	const {id} = useParams();
@@ -13,7 +13,7 @@ export const Pizza = () => {
 	useEffect(() => {
 		const fetchPizza = async () => {
 			setIsLoading(true);
-			const { data } = await axios.get(`https://62d86a78908831393590aa97.mockapi.io/items/${id}`);
+			const data = await PizzaApi.getOne(id!);
 			setCard(data);
 			setIsLoading(false);
 		};
